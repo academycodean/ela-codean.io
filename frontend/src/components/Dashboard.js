@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/
 import { Badge } from './ui/badge';
 import TypingAnimation from './TypingAnimation';
 import { LogOut, Moon, Sun, Code2, Server, Database, ArrowRight } from 'lucide-react';
+import SpringBootProjectDownloader from './SpringBootProjectDownloader';
 
 const iconComponents = {
   Code2,
