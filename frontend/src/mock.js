@@ -1,8 +1,12 @@
 // Mock data for Codean Bootcamp
 export const mockUsers = [
-  { username: "admin", password: "123456", role: "admin" },
-  { username: "siswa1", password: "password", role: "student" },
-  { username: "siswa2", password: "student123", role: "student" }
+  { username: "admin", password: "1234", role: "admin" },
+  { username: "student", password: "bootcamp", role: "student" },
+  { username: "codean", password: "2025", role: "instructor" },
+  { username: "codean", password: "batch7", role: "student" },
+  { username: "codean", password: "batch8", role: "student" },
+  { username: "codean", password: "batch9", role: "student" },
+  { username: "codean", password: "batch10", role: "student" }
 ];
 
 export const mockCourses = [
