@@ -1616,6 +1616,17 @@ CREATE INDEX idx_user_name_age ON users(name, age);</code></pre>
 
 export const mockProgress = {
   "html-basics": { completed: true, timeSpent: 45 },
+  "html-lists-tables": { completed: true, timeSpent: 30 },
+  "html-links-images": { completed: false, timeSpent: 15 },
+  "html-forms": { completed: false, timeSpent: 0 },
+  "html-semantic": { completed: false, timeSpent: 0 },
   "css-basics": { completed: false, timeSpent: 20 },
-  "javascript-basics": { completed: false, timeSpent: 0 }
+  "css-colors-backgrounds": { completed: false, timeSpent: 0 },
+  "css-text-fonts": { completed: false, timeSpent: 0 },
+  "css-box-model": { completed: false, timeSpent: 0 },
+  "css-transforms": { completed: false, timeSpent: 0 },
+  "jquery-basics": { completed: false, timeSpent: 0 },
+  "jquery-selectors": { completed: false, timeSpent: 0 },
+  "jquery-events": { completed: false, timeSpent: 0 },
+  "jquery-forms": { completed: false, timeSpent: 0 }
 };
