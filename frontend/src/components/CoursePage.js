@@ -22,6 +22,7 @@ import {
   CheckCircle2,
   Clock
 } from 'lucide-react';
+import CodeDownloader from './CodeDownloader';
 
 const CoursePage = ({ course, onBack }) => {
   const { user, logout } = useAuth();
