@@ -852,6 +852,276 @@ transform: perspective(700px) rotateZ(45deg);</code></pre>
     &lt;/script&gt;
 &lt;/body&gt;</code></pre>
         `
+      },
+      {
+        id: "jquery-selectors",
+        title: "jQuery Advanced Selectors",
+        content: `
+          <h3>Nested Selectors</h3>
+          <pre><code>&lt;body&gt;
+    &lt;ul class="daftar"&gt;
+        &lt;li&gt;Andi&lt;/li&gt;
+        &lt;li&gt;Budi&lt;/li&gt;
+        &lt;li&gt;Caca&lt;/li&gt;
+        &lt;li&gt;Dedi&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;script&gt;
+        $(document).ready(function(){
+            $('.daftar').css('background-color','yellow');
+            $('.daftar li:first').css('color','red');
+            $('.daftar li:last').css('color','blue');
+            //$('.daftar li:even').css('color','red'); //Example of even/odd selectors
+            //$('.daftar li:odd').css('color','blue'); //Example of even/odd selectors
+        });
+    &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+
+          <h3>Attribute Selectors</h3>
+          <pre><code>&lt;body&gt;
+    &lt;p&gt;&lt;input type="text" value="Ketik di sini!"&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;input type="submit" value="Tombol 1"&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;input type="button" value="Tombol 2"&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;a href="http://google.com"&gt;Link 1&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;a href="http://yahoo.com"&gt;Link 2&lt;/a&gt;&lt;/p&gt;
+    &lt;script&gt;
+        $(document).ready(function(){
+            // $(':text').hide();  // Example of attribute selector
+            // $(':submit').hide(); // Example of attribute selector
+            // $(':button').hide(); // Example of attribute selector
+            $('[href]').css('color','pink');
+            $('a[href="http://yahoo.com"]').css('color','red');
+        });
+    &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        `
+      },
+      {
+        id: "jquery-events",
+        title: "jQuery Events",
+        content: `
+          <h3>Click Alert</h3>
+          <pre><code>&lt;body&gt;
+    &lt;button id="tombol1"&gt;Tombol 1&lt;/button&gt;
+    &lt;button id="tombol2"&gt;Tombol 2&lt;/button&gt;
+    &lt;script&gt;
+        $(document).ready(function(){
+            $('#tombol1').click(function(){
+                alert('Tombol 1 ditekan!');
+            });
+            $('#tombol2').on('click', function(){
+                alert('Tombol 2 ditekan!');
+            });
+        });
+    &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+
+          <h3>Click Show & Hide</h3>
+          <pre><code>&lt;body&gt;
+    &lt;button id="tombol1"&gt;Tombol 1&lt;/button&gt;
+    &lt;button id="tombol2"&gt;Tombol 2&lt;/button&gt;
+    &lt;p class="note"&gt;Halo Dunia!&lt;/p&gt;
+    &lt;script&gt;
+        $(document).ready(function(){
+            $('.note').hide();
+            $('#tombol1').click(function(){
+                $('.note').hide();
+            });
+            $('#tombol2').on('click', function(){
+                $('.note').show();
+            });
+        });
+    &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+
+          <h3>Click Toggle</h3>
+          <pre><code>&lt;body&gt;
+    &lt;button id="tombol1"&gt;Tombol 1&lt;/button&gt;
+    &lt;p class="note"&gt;Halo Dunia!&lt;/p&gt;
+    &lt;script&gt;
+        $(document).ready(function(){
+            $('#tombol1').click(function(){
+                $('.note').toggle();
+            });
+        });
+    &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+
+          <h3>Click Toggle with Delay</h3>
+          <pre><code>&lt;body&gt;
+    &lt;button id="tombol1"&gt;Tombol 1&lt;/button&gt;
+    &lt;p class="note"&gt;Halo Dunia!&lt;/p&gt;
+    &lt;script&gt;
+        $(document).ready(function(){
+            $('#tombol1').click(function(){
+                $('.note').toggle(1000, function(){
+                    alert('Tombol ditekan!');
+                });
+            });
+        });
+    &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+
+          <h3>Double-Click</h3>
+          <pre><code>&lt;body&gt;
+    &lt;button id="tombol1"&gt;Tombol 1&lt;/button&gt;
+    &lt;p class="note"&gt;Halo Dunia!&lt;/p&gt;
+    &lt;script&gt;
+        $(document).ready(function(){
+            $('#tombol1').dblclick(function(){
+                $('.note').toggle();
+            });
+        });
+    &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+
+          <h3>Hover</h3>
+          <pre><code>&lt;body&gt;
+    &lt;button id="tombol1"&gt;Tombol 1&lt;/button&gt;
+    &lt;p class="note"&gt;Halo Dunia!&lt;/p&gt;
+    &lt;script&gt;
+        $(document).ready(function(){
+            $('#tombol1').hover(function(){
+                $('.note').toggle();
+            });
+        });
+    &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+
+          <h3>Mouse Events</h3>
+          <pre><code>&lt;body&gt;
+    &lt;button id="tombol1"&gt;Tombol 1&lt;/button&gt;
+    &lt;p class="note"&gt;Halo Dunia!&lt;/p&gt;
+    &lt;script&gt;
+        $(document).ready(function(){
+            $('#tombol1').on('mousemove', function(){
+                $('.note').toggle();
+            });
+            $('#tombol1').on('mousedown', function(){
+                $('.note').toggle();
+            });
+            $('#tombol1').on('mouseup', function(){
+                $('.note').toggle();
+            });
+        });
+    &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        `
+      },
+      {
+        id: "jquery-forms",
+        title: "jQuery Forms & Input",
+        content: `
+          <h3>Getting Event Information</h3>
+          <pre><code>&lt;body&gt;
+    &lt;button id="tombol1"&gt;Tombol 1&lt;/button&gt;
+    &lt;script&gt;
+        $(document).ready(function(){
+            $('#tombol1').click(function(x){
+                console.log(x);
+                // alert(x.currentTarget.id);
+                // alert(x.currentTarget.innerHTML);
+                // alert(x.currentTarget.outerHTML);
+            });
+        });
+    &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+
+          <h3>Cursor Position</h3>
+          <pre><code>&lt;body style="background-color:yellow"&gt;
+    &lt;script&gt;
+        $(document).ready(function(){
+            $(document).on('mousemove', function(pos){
+                console.log('X: '+pos.clientX+' Y: '+pos.clientY);
+            });
+        });
+    &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+
+          <h3>Cursor Position & Embedding in Browser</h3>
+          <pre><code>&lt;body style="background-color:yellow"&gt;
+    &lt;h1 id="a"&gt;&lt;/h1&gt;
+    &lt;script&gt;
+        $(document).ready(function(){
+            $(document).on('mousemove', function(z){
+                $('#a').html('X: '+z.clientX+' Y: '+z.clientY);
+            });
+        });
+    &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+
+          <h3>Input Form Events</h3>
+          <pre><code>&lt;body&gt;
+    &lt;input type="text"&gt;
+    &lt;script&gt;
+        $(document).ready(function(){
+            $('input').focus(function(){
+                $(this).css('background','pink');
+            });
+            $('input').blur(function(){
+                $(this).css('background','yellow');
+            });
+        });
+    &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+
+          <h3>Get User Input</h3>
+          <pre><code>&lt;body&gt;
+    &lt;input type="text"&gt;
+    &lt;script&gt;
+        $(document).ready(function(){
+            $('input').keyup(function(x){
+                console.log(x.target.value);
+            });
+            //try too: .keydown
+        });
+    &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+
+          <h3>Select Form Events</h3>
+          <pre><code>&lt;body&gt;
+    &lt;select id="sex"&gt;
+        &lt;option value="Aku_Pria"&gt;Laki-laki&lt;/option&gt;
+        &lt;option value="Aku_Wanita"&gt;Perempuan&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;script&gt;
+        $(document).ready(function(){
+            $('select#sex').change(function(pilih){
+                alert(pilih.target.value);
+            });
+        });
+    &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+
+          <h3>Full Form Events</h3>
+          <pre><code>&lt;body&gt;
+    &lt;form id="formulir"&gt;
+        &lt;p&gt;&lt;input type="text" id="nama"&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;input type="number" id="usia"&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;select id="sex"&gt;
+            &lt;option value="pria"&gt;Laki-laki&lt;/option&gt;
+            &lt;option value="wanita"&gt;Perempuan&lt;/option&gt;
+        &lt;/select&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;input type="submit"&gt;&lt;/p&gt;
+    &lt;/form&gt;
+    &lt;script&gt;
+        $('#formulir').submit(function(x){
+            x.preventDefault();
+            console.log('Formulir terisi!');
+        });
+    &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+
+          <h3>Get User Form Input</h3>
+          <pre><code>&lt;script&gt;
+    $('#formulir').submit(function(x){
+        x.preventDefault();
+        var nama = $('input#nama').val();
+        var usia = $('input#usia').val();
+        var sex = $('select#sex').val();
+        console.log(nama+usia+sex);
+    });
+&lt;/script&gt;</code></pre>
+        `
       }
     ]
   },
