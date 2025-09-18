@@ -2802,5 +2802,11 @@ export const mockProgress = {
   "jquery-basics": { completed: false, timeSpent: 0 },
   "jquery-selectors": { completed: false, timeSpent: 0 },
   "jquery-events": { completed: false, timeSpent: 0 },
-  "jquery-forms": { completed: false, timeSpent: 0 }
+  "jquery-forms": { completed: false, timeSpent: 0 },
+  "java-fundamentals": { completed: false, timeSpent: 0 },
+  "spring-boot-intro": { completed: false, timeSpent: 0 },
+  "spring-boot-rest-api": { completed: false, timeSpent: 0 },
+  "spring-boot-database": { completed: false, timeSpent: 0 },
+  "spring-security": { completed: false, timeSpent: 0 },
+  "spring-testing": { completed: false, timeSpent: 0 }
 };
