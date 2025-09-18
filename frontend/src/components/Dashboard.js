@@ -134,6 +134,18 @@ const Dashboard = ({ onCourseSelect }) => {
           })}
         </div>
 
+        {/* Download Project Section */}
+        <div className="mt-16 text-center">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+            🚀 Complete Spring Boot Project
+          </h3>
+          <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-2xl mx-auto">
+            Download project Spring Boot lengkap dengan CRUD operations, validation, exception handling, dan testing. 
+            Siap untuk dipelajari dan dikembangkan lebih lanjut!
+          </p>
+          <SpringBootProjectDownloader />
+        </div>
+
         {/* Stats Section */}
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6">
           <div className="text-center p-6 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700">
