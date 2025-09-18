@@ -856,77 +856,407 @@ transform: perspective(700px) rotateZ(45deg);</code></pre>
     ]
   },
   {
-    id: "backend",
-    title: "Backend Development",
-    description: "Learn Java, Spring Boot, and API development",
+    id: "css-advanced",
+    title: "CSS Advanced",
+    description: "Learn CSS Layouting, Grid, and advanced techniques",
     icon: "Server",
     color: "from-green-500 to-teal-600",
     modules: [
       {
-        id: "java-basics",
-        title: "Java Fundamentals",
+        id: "css-variables",
+        title: "CSS Variables & Selectors",
         content: `
-          <h3>Introduction to Java</h3>
-          <p>Java is a popular object-oriented programming language.</p>
+          <h3>CSS Variables</h3>
+          <p>CSS variables (also called custom properties) allow you to store CSS values and reuse them throughout your stylesheet. This improves maintainability and consistency.</p>
           
-          <h4>Basic Syntax</h4>
-          <pre><code>public class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-    }
+          <h4>Syntax</h4>
+          <pre><code>:root {
+  --merah: red;
+  --kuning: orange;
+  --hijau: greenyellow;
+}
+
+h1 { color: var(--merah); }
+h2 { color: var(--kuning); }
+h3 { color: var(--hijau); }</code></pre>
+
+          <h4>Example HTML</h4>
+          <pre><code>&lt;h1&gt;Halo semuanya, apa kabar?&lt;/h1&gt;
+&lt;h2&gt;Halo semuanya, apa kabar?&lt;/h2&gt;
+&lt;h3&gt;Halo semuanya, apa kabar?&lt;/h3&gt;</code></pre>
+
+          <h3>Grouping Selectors</h3>
+          <p>You can apply the same styles to multiple HTML elements by separating their selectors with commas.</p>
+          <pre><code>h1, h2, p {
+  color: blueviolet;
+  font-family: Impact;
 }</code></pre>
 
-          <h4>Variables and Data Types</h4>
-          <pre><code>int number = 42;
-double price = 19.99;
-String name = "Java";
-boolean isActive = true;</code></pre>
+          <h4>Example HTML</h4>
+          <pre><code>&lt;h1&gt;Contoh Grouping&lt;/h1&gt;
+&lt;h2&gt;Tiga elemen,&lt;/h2&gt;
+&lt;p&gt;Satu style.&lt;/p&gt;</code></pre>
 
-          <h4>Classes and Objects</h4>
-          <pre><code>public class Person {
-    private String name;
-    private int age;
-    
-    public Person(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
-    
-    public String getName() {
-        return name;
-    }
+          <h3>Descendant Selector</h3>
+          <p>The descendant selector targets elements nested within other elements. The space separates the ancestor and descendant selectors.</p>
+          <pre><code>main h2 {
+  color: red;
+  font-family: Impact;
+}
+
+header h2, footer h2 {
+  color: green;
+  font-family: Arial;
 }</code></pre>
+
+          <h4>Example HTML</h4>
+          <pre><code>&lt;header&gt;&lt;h2&gt;Ini header&lt;/h2&gt;&lt;/header&gt;
+&lt;main&gt;&lt;h2&gt;Ini konten&lt;/h2&gt;&lt;/main&gt;
+&lt;footer&gt;&lt;h2&gt;Ini footer&lt;/h2&gt;&lt;/footer&gt;</code></pre>
         `
       },
       {
-        id: "oop-concepts",
-        title: "Object-Oriented Programming",
+        id: "css-advanced-selectors",
+        title: "Advanced CSS Selectors",
         content: `
-          <h3>OOP Principles</h3>
-          
-          <h4>1. Encapsulation</h4>
-          <p>Bundling data and methods that operate on that data within a single unit (class).</p>
-          
-          <h4>2. Inheritance</h4>
-          <pre><code>public class Animal {
-    protected String name;
-    
-    public void eat() {
-        System.out.println(name + " is eating");
-    }
+          <h3>Child Selector</h3>
+          <p>The child selector (>) targets only the direct children of a parent element, not all descendants.</p>
+          <pre><code>main > p {
+  color: red;
+  font-family: Impact;
+  font-size: 30px;
 }
 
-public class Dog extends Animal {
-    public void bark() {
-        System.out.println(name + " is barking");
-    }
+main > div > p {
+  color: red;
+  font-family: Impact;
+  font-size: 30px;
 }</code></pre>
 
-          <h4>3. Polymorphism</h4>
-          <p>Objects of different types can be treated as instances of the same type through inheritance.</p>
+          <h4>Example HTML</h4>
+          <pre><code>&lt;main&gt;
+  &lt;p&gt;di dalam main&lt;/p&gt;
+  &lt;div&gt;
+    &lt;p&gt;dalam div dalam main&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/main&gt;</code></pre>
+
+          <h3>Adjacent Sibling Selector</h3>
+          <p>The adjacent sibling selector (+) selects an element that immediately follows another element.</p>
+          <pre><code>h1 + p { /* Styles the paragraph immediately after h1 */
+  color: red;
+  font-family: Impact;
+  font-size: 30px;
+}
+
+h1 + p + p { /* Styles the second paragraph after h1 */
+  color: red;
+  font-family: Impact;
+  font-size: 30px;
+}</code></pre>
+
+          <h4>Example HTML</h4>
+          <pre><code>&lt;h1&gt;Ini header&lt;/h1&gt;
+&lt;p&gt;Ini paragraf 1&lt;/p&gt;
+&lt;p&gt;Ini paragraf 2&lt;/p&gt;
+&lt;p&gt;Ini paragraf 3&lt;/p&gt;</code></pre>
+
+          <h3>Pseudo-classes</h3>
+          <p>Pseudo-classes style elements based on their state (e.g., :hover, :active, :visited).</p>
           
-          <h4>4. Abstraction</h4>
-          <p>Hiding complex implementation details while showing only essential features.</p>
+          <h4>Links</h4>
+          <pre><code>a:visited { color: purple; }
+a:link { color: red; }</code></pre>
+
+          <h4>Hover</h4>
+          <pre><code>h1 {
+  text-align: center;
+  color: purple;
+}
+h1:hover {
+  color: white;
+  background-color: purple;
+}</code></pre>
+
+          <h4>Focus</h4>
+          <pre><code>input:focus { background-color: lightgreen; }</code></pre>
+
+          <h4>Active</h4>
+          <pre><code>input:active { background-color: lightgreen; }</code></pre>
+        `
+      },
+      {
+        id: "css-pseudo-elements",
+        title: "Pseudo-elements & Positioning",
+        content: `
+          <h3>Pseudo-elements</h3>
+          <p>Pseudo-elements style parts of an element (e.g., ::first-letter, ::first-line).</p>
+
+          <h4>Child Pseudo-elements</h4>
+          <p>These style elements based on their position among siblings.</p>
+          <pre><code>h2:first-child { background-color: red; }
+h2:last-child { background-color: green; }
+h2:nth-child(2) { background-color: yellow; }
+h2:nth-child(odd) { background-color: yellow; }
+h2:nth-child(even) { background-color: red; }
+h2:nth-of-type(1) { background-color: red; }
+h2:nth-of-type(2) { background-color: green; }
+h2:nth-of-type(3) { background-color: yellow; }
+h2:nth-of-type(odd) { background-color: yellow; }
+h2:nth-of-type(even) { background-color: red; }</code></pre>
+
+          <h4>First Letter & Line</h4>
+          <pre><code>p::first-letter { font-size: 100px; }
+p::first-line { color: red; font-size: 50px; }</code></pre>
+
+          <h3>Positioning</h3>
+          <p>The position property controls element placement:</p>
+          <ul>
+            <li><strong>static:</strong> Default. Element is positioned according to normal flow.</li>
+            <li><strong>relative:</strong> Element is positioned relative to its normal position.</li>
+            <li><strong>absolute:</strong> Element is positioned relative to its nearest positioned ancestor.</li>
+            <li><strong>fixed:</strong> Element is positioned relative to the viewport.</li>
+          </ul>
+
+          <h4>Example</h4>
+          <pre><code>.relative-box {
+  position: relative;
+  top: 20px;
+  left: 30px;
+}
+
+.absolute-box {
+  position: absolute;
+  top: 50px;
+  right: 20px;
+}
+
+.fixed-box {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}</code></pre>
+
+          <h3>Float & Clear</h3>
+          <p>float moves an element to the left or right, allowing text to wrap around it. clear prevents elements from floating alongside floated elements.</p>
+          <pre><code>.pic { float: right; }
+.text { clear: both; }</code></pre>
+        `
+      },
+      {
+        id: "css-layout-techniques",
+        title: "CSS Layout Techniques",
+        content: `
+          <h3>Columns</h3>
+          <p>The column-count, column-gap, and column-rule properties create multi-column layouts.</p>
+          <pre><code>.kolom {
+  column-count: 3;
+  column-gap: 50px;
+  column-rule: 20px double red;
+}</code></pre>
+
+          <h3>Importing Stylesheets</h3>
+          <p>The @import rule imports external stylesheets into your current stylesheet.</p>
+          <pre><code>@import url('1.css');</code></pre>
+
+          <h3>Media Queries</h3>
+          <p>Media queries allow you to apply different styles based on the device's characteristics (screen size, print media, etc.).</p>
+          
+          <h4>Print Media</h4>
+          <pre><code>@media print {
+  body { font-size: 1250%; }
+}</code></pre>
+
+          <h4>Screen Size</h4>
+          <pre><code>@media screen and (min-width: 600px) { 
+  body { background-color: blue; } 
+}
+@media screen and (max-width: 600px) { 
+  body { background-color: red; } 
+}
+@media screen and (min-width: 900px) { 
+  body { background-color: greenyellow; } 
+}</code></pre>
+
+          <h3>Transitions</h3>
+          <p>Transitions smoothly animate changes to CSS properties.</p>
+          <pre><code>body {
+  transition: 1s; /* 1-second transition for all properties */
+  height: 500px;
+  background-color: yellow;
+}
+body:hover { background-color: black; }
+
+.box {
+  transition: height 1s; /* 1-second transition for height property */
+  height: 100px;
+  width: 200px;
+  background-color: red;
+}
+.box:hover { height: 200px; background-color: blue; }
+
+.box {
+  transition: height 1s 2000ms; /* 1-second transition with 2-second delay */
+  height: 100px;
+  width: 200px;
+  background-color: red;
+}
+.box:hover { height: 200px; background-color: blue; }</code></pre>
+        `
+      },
+      {
+        id: "css-grid",
+        title: "CSS Grid Layout",
+        content: `
+          <h3>Basic Grid Layout</h3>
+          <p>CSS Grid provides a powerful way to create two-dimensional layouts.</p>
+          
+          <h4>HTML Structure</h4>
+          <pre><code>&lt;body&gt;
+&lt;div id="content"&gt;
+  &lt;div class="kotak1"&gt;1&lt;/div&gt;
+  &lt;div class="kotak2"&gt;2&lt;/div&gt;
+  &lt;div class="kotak3"&gt;3&lt;/div&gt;
+  &lt;div class="kotak4"&gt;4&lt;/div&gt;
+  &lt;div class="kotak5"&gt;5&lt;/div&gt;
+  &lt;div class="kotak6"&gt;6&lt;/div&gt;
+  &lt;div class="kotak7"&gt;7&lt;/div&gt;
+  &lt;div class="kotak8"&gt;8&lt;/div&gt;
+  &lt;div class="kotak9"&gt;9&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;</code></pre>
+
+          <h4>CSS Styling</h4>
+          <pre><code>body {
+  color: white;
+  text-align: center;
+}
+#content {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+}
+#content div {
+  background: lightskyblue;
+  padding: 30px;
+}
+#content div:nth-child(even) {
+  background: grey;
+}</code></pre>
+
+          <h3>Template Columns</h3>
+          <p>Define column sizes using different methods:</p>
+          
+          <h4>Percentage-based</h4>
+          <pre><code>grid-template-columns: 30% 30% 30%;</code></pre>
+
+          <h4>Fractions</h4>
+          <pre><code>grid-template-columns: 1fr 2fr 1fr;</code></pre>
+
+          <h4>Repeat</h4>
+          <pre><code>grid-template-columns: repeat(3, 1fr);</code></pre>
+
+          <h3>Template Rows</h3>
+          <p>Define row sizes using different methods:</p>
+          
+          <h4>Fixed Pixel Values</h4>
+          <pre><code>grid-template-rows: 100px 200px 300px;</code></pre>
+
+          <h4>Fractions</h4>
+          <pre><code>grid-template-rows: 1fr 2fr 1fr;</code></pre>
+
+          <h4>Repeat</h4>
+          <pre><code>grid-template-rows: repeat(3, 1fr);</code></pre>
+
+          <h3>Auto Rows</h3>
+          <p>Use grid-auto-rows for automatic row sizing:</p>
+          
+          <h4>Fixed Height</h4>
+          <pre><code>grid-auto-rows: 150px;</code></pre>
+
+          <h4>MinMax</h4>
+          <pre><code>grid-auto-rows: minmax(100px, auto);</code></pre>
+        `
+      },
+      {
+        id: "css-grid-advanced",
+        title: "Advanced CSS Grid",
+        content: `
+          <h3>Grid Gap</h3>
+          <p>Add spacing between grid items:</p>
+          <pre><code>grid-column-gap: 20px;
+grid-row-gap: 10px;
+/*or grid-gap: 20px; (for equal gap in both directions)*/</code></pre>
+
+          <h3>Grid Lines</h3>
+          <p>Grid lines are the dividing lines that make up the structure of the grid. They can be horizontal or vertical.</p>
+
+          <h3>Grid Column</h3>
+          <p>Span grid items across multiple columns:</p>
+          <pre><code>.kotak1 {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+.kotak2 {
+  grid-column: 4 / 10;
+}</code></pre>
+
+          <h3>Grid Row</h3>
+          <p>Span grid items across multiple rows:</p>
+          <pre><code>.kotak3 {
+  grid-column: 1 / 5;
+  grid-row: 2 / 4;
+}</code></pre>
+
+          <h3>Nested Grids</h3>
+          <p>Create grids within grids:</p>
+          <pre><code>.kotak4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+.kotak4 p {
+  border: 2px solid white;
+  padding: 20px;
+}</code></pre>
+
+          <h4>HTML for Nested Grid</h4>
+          <pre><code>&lt;div class="kotak4"&gt;
+  &lt;p&gt;A&lt;/p&gt;&lt;p&gt;B&lt;/p&gt;&lt;p&gt;C&lt;/p&gt;&lt;p&gt;D&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+          <h3>Align Items</h3>
+          <p>Control vertical alignment of grid items:</p>
+          <pre><code>align-items: start; /*or stretch, end, center*/</code></pre>
+
+          <h3>Justify Items</h3>
+          <p>Control horizontal alignment of grid items:</p>
+          <pre><code>justify-items: start; /*or stretch, end, center*/</code></pre>
+
+          <h3>Align & Justify Self</h3>
+          <p>Control individual item alignment:</p>
+          <pre><code>.kotak1 {
+  align-self: stretch;
+  justify-self: stretch;
+  /*or start, end, center*/
+}</code></pre>
+
+          <h3>Grid Areas</h3>
+          <p>Define grid areas using named areas:</p>
+          <pre><code>grid-template-areas:
+"area1 area1 area1"
+". area2 area2";
+
+.kotak1 { grid-area: area1; }
+.kotak2 { grid-area: area2; }</code></pre>
+
+          <h3>Responsive Grids</h3>
+          <p>Create responsive grid layouts:</p>
+          <pre><code>@media screen and (min-width: 900px) {
+  #content {
+    /* Grid properties for larger screens */
+  }
+}</code></pre>
         `
       }
     ]
