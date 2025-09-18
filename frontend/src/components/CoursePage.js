@@ -285,6 +285,11 @@ const CoursePage = ({ course, onBack }) => {
                       {selectedModule.title}
                     </CardTitle>
                     <div className="flex items-center space-x-2">
+                      <CodeDownloader 
+                        moduleId={selectedModule.id}
+                        moduleTitle={selectedModule.title}
+                        content={selectedModule.content}
+                      />
                       {getModuleProgress(selectedModule.id).completed && (
                         <Badge variant="default" className="bg-green-500">
                           <CheckCircle2 className="h-3 w-3 mr-1" />
