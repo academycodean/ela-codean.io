@@ -1532,82 +1532,1256 @@ grid-row-gap: 10px;
     ]
   },
   {
-    id: "database",
-    title: "Database Management",
-    description: "Learn SQL, database design, and data management",
+    id: "backend",
+    title: "Backend Development - Spring Boot",
+    description: "Learn Java, Spring Boot, REST API, and backend development",
     icon: "Database",
     color: "from-orange-500 to-red-600",
     modules: [
       {
-        id: "sql-basics",
-        title: "SQL Fundamentals",
+        id: "java-fundamentals",
+        title: "Java Fundamentals",
         content: `
-          <h3>Introduction to SQL</h3>
-          <p>SQL (Structured Query Language) is used to manage relational databases.</p>
+          <h3>Introduction to Java</h3>
+          <p>Java adalah bahasa pemrograman berorientasi objek yang powerful dan populer untuk pengembangan backend. Java berjalan di JVM (Java Virtual Machine) sehingga dapat berjalan di berbagai platform.</p>
           
-          <h4>Basic Queries</h4>
-          <pre><code>-- Select all columns
-SELECT * FROM users;
+          <h4>Setup Java Development</h4>
+          <pre><code>// 1. Install Java JDK 17 atau lebih baru
+// 2. Install IDE (IntelliJ IDEA, Eclipse, atau VS Code)
+// 3. Verify installation
+java --version
+javac --version</code></pre>
 
--- Select specific columns
-SELECT name, email FROM users;
+          <h4>Basic Java Syntax</h4>
+          <pre><code>public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+        
+        // Variables
+        String name = "Codean Bootcamp";
+        int age = 25;
+        boolean isActive = true;
+        
+        // Arrays
+        String[] languages = {"Java", "Spring", "HTML", "CSS"};
+        
+        // Loops
+        for(String lang : languages) {
+            System.out.println("Learning: " + lang);
+        }
+    }
+}</code></pre>
 
--- Filter with WHERE
-SELECT * FROM users WHERE age > 18;</code></pre>
+          <h4>Object-Oriented Programming</h4>
+          <pre><code>// Class definition
+public class Student {
+    // Private fields (Encapsulation)
+    private String name;
+    private int age;
+    private String course;
+    
+    // Constructor
+    public Student(String name, int age, String course) {
+        this.name = name;
+        this.age = age;
+        this.course = course;
+    }
+    
+    // Getters and Setters
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    // Methods
+    public void study() {
+        System.out.println(name + " is studying " + course);
+    }
+    
+    public void displayInfo() {
+        System.out.println("Name: " + name + ", Age: " + age + ", Course: " + course);
+    }
+}</code></pre>
 
-          <h4>Data Manipulation</h4>
-          <pre><code>-- Insert data
-INSERT INTO users (name, email, age) 
-VALUES ('John Doe', 'john@email.com', 25);
+          <h4>Inheritance & Polymorphism</h4>
+          <pre><code>// Base class
+public abstract class Person {
+    protected String name;
+    protected int age;
+    
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    public abstract void introduce();
+}
 
--- Update data
-UPDATE users 
-SET age = 26 
-WHERE name = 'John Doe';
+// Derived class
+public class Student extends Person {
+    private String course;
+    
+    public Student(String name, int age, String course) {
+        super(name, age);
+        this.course = course;
+    }
+    
+    @Override
+    public void introduce() {
+        System.out.println("Hi, I'm " + name + ", studying " + course);
+    }
+}
 
--- Delete data
-DELETE FROM users WHERE id = 1;</code></pre>
-
-          <h4>Joins</h4>
-          <pre><code>-- Inner Join
-SELECT u.name, p.title 
-FROM users u 
-INNER JOIN posts p ON u.id = p.user_id;
-
--- Left Join
-SELECT u.name, p.title 
-FROM users u 
-LEFT JOIN posts p ON u.id = p.user_id;</code></pre>
+// Usage
+public class Main {
+    public static void main(String[] args) {
+        Student student = new Student("John", 22, "Spring Boot");
+        student.introduce();
+    }
+}</code></pre>
         `
       },
       {
-        id: "database-design",
-        title: "Database Design",
+        id: "spring-boot-intro",
+        title: "Spring Boot Introduction",
         content: `
-          <h3>Database Design Principles</h3>
+          <h3>Introduction to Spring Boot</h3>
+          <p>Spring Boot adalah framework Java yang mempermudah pembuatan aplikasi Spring. Dengan konfigurasi minimal dan auto-configuration, Anda bisa membuat aplikasi production-ready dengan cepat.</p>
           
-          <h4>1. Normalization</h4>
-          <p>Process of organizing data to reduce redundancy.</p>
+          <h4>Key Features Spring Boot</h4>
           <ul>
-            <li><strong>1NF</strong>: Eliminate repeating groups</li>
-            <li><strong>2NF</strong>: Eliminate partial dependencies</li>
-            <li><strong>3NF</strong>: Eliminate transitive dependencies</li>
+            <li><strong>Auto Configuration</strong>: Konfigurasi otomatis berdasarkan dependencies</li>
+            <li><strong>Standalone</strong>: Tidak memerlukan server eksternal</li>
+            <li><strong>Production Ready</strong>: Built-in monitoring dan health checks</li>
+            <li><strong>No XML Configuration</strong>: Menggunakan annotations dan Java config</li>
           </ul>
 
-          <h4>2. Entity Relationship Diagram</h4>
-          <p>Visual representation of database structure:</p>
+          <h4>Creating Spring Boot Project</h4>
+          <p>Gunakan Spring Initializr (https://start.spring.io) atau IDE untuk membuat project baru:</p>
+          <pre><code>// Maven Dependencies (pom.xml)
+&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;mysql&lt;/groupId&gt;
+        &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+        &lt;scope&gt;runtime&lt;/scope&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;</code></pre>
+
+          <h4>Main Application Class</h4>
+          <pre><code>package com.codean.bootcamp;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class CodeanBootcampApplication {
+    
+    public static void main(String[] args) {
+        SpringApplication.run(CodeanBootcampApplication.class, args);
+        System.out.println("🚀 Codean Bootcamp API Started!");
+    }
+}</code></pre>
+
+          <h4>Application Properties</h4>
+          <pre><code># application.properties
+server.port=8080
+spring.application.name=codean-bootcamp
+
+# Database Configuration
+spring.datasource.url=jdbc:mysql://localhost:3306/codean_bootcamp
+spring.datasource.username=root
+spring.datasource.password=password
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# JPA Configuration
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
+spring.jpa.show-sql=true</code></pre>
+
+          <h4>First REST Controller</h4>
+          <pre><code>package com.codean.bootcamp.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HomeController {
+    
+    @GetMapping("/")
+    public String home() {
+        return "Welcome to Codean Bootcamp API!";
+    }
+    
+    @GetMapping("/health")
+    public String health() {
+        return "API is running smoothly! ✅";
+    }
+}</code></pre>
+        `
+      },
+      {
+        id: "spring-boot-rest-api",
+        title: "REST API Development",
+        content: `
+          <h3>Building REST APIs with Spring Boot</h3>
+          <p>REST (Representational State Transfer) adalah arsitektur untuk membangun web services. Spring Boot mempermudah pembuatan REST API dengan annotations yang powerful.</p>
+          
+          <h4>HTTP Methods & Annotations</h4>
           <ul>
-            <li><strong>Entities</strong>: Objects or concepts</li>
-            <li><strong>Attributes</strong>: Properties of entities</li>
-            <li><strong>Relationships</strong>: Connections between entities</li>
+            <li><strong>@GetMapping</strong>: Untuk membaca data (HTTP GET)</li>
+            <li><strong>@PostMapping</strong>: Untuk membuat data baru (HTTP POST)</li>
+            <li><strong>@PutMapping</strong>: Untuk update data (HTTP PUT)</li>
+            <li><strong>@DeleteMapping</strong>: Untuk menghapus data (HTTP DELETE)</li>
           </ul>
 
-          <h4>3. Indexing</h4>
-          <pre><code>-- Create index for faster queries
-CREATE INDEX idx_user_email ON users(email);
+          <h4>Student Entity</h4>
+          <pre><code>package com.codean.bootcamp.entity;
 
--- Composite index
-CREATE INDEX idx_user_name_age ON users(name, age);</code></pre>
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "students")
+public class Student {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @Column(nullable = false)
+    private String name;
+    
+    @Column(unique = true, nullable = false)
+    private String email;
+    
+    private String course;
+    private int age;
+    
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+    
+    // Constructors
+    public Student() {}
+    
+    public Student(String name, String email, String course, int age) {
+        this.name = name;
+        this.email = email;
+        this.course = course;
+        this.age = age;
+        this.createdAt = LocalDateTime.now();
+    }
+    
+    // Getters and Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+    
+    public String getCourse() { return course; }
+    public void setCourse(String course) { this.course = course; }
+    
+    public int getAge() { return age; }
+    public void setAge(int age) { this.age = age; }
+    
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+}</code></pre>
+
+          <h4>Student Repository</h4>
+          <pre><code>package com.codean.bootcamp.repository;
+
+import com.codean.bootcamp.entity.Student;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public interface StudentRepository extends JpaRepository&lt;Student, Long&gt; {
+    
+    // Find by email
+    Optional&lt;Student&gt; findByEmail(String email);
+    
+    // Find by course
+    List&lt;Student&gt; findByCourse(String course);
+    
+    // Find by age range
+    List&lt;Student&gt; findByAgeBetween(int minAge, int maxAge);
+    
+    // Custom query
+    @Query("SELECT s FROM Student s WHERE s.name LIKE %:name%")
+    List&lt;Student&gt; findByNameContaining(String name);
+    
+    // Count by course
+    long countByCourse(String course);
+}</code></pre>
+
+          <h4>Student Controller - Complete CRUD</h4>
+          <pre><code>package com.codean.bootcamp.controller;
+
+import com.codean.bootcamp.entity.Student;
+import com.codean.bootcamp.repository.StudentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/api/students")
+@CrossOrigin(origins = "http://localhost:3000") // For React frontend
+public class StudentController {
+    
+    @Autowired
+    private StudentRepository studentRepository;
+    
+    // GET all students
+    @GetMapping
+    public List&lt;Student&gt; getAllStudents() {
+        return studentRepository.findAll();
+    }
+    
+    // GET student by ID
+    @GetMapping("/{id}")
+    public ResponseEntity&lt;Student&gt; getStudentById(@PathVariable Long id) {
+        Optional&lt;Student&gt; student = studentRepository.findById(id);
+        
+        if (student.isPresent()) {
+            return ResponseEntity.ok(student.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
+    // POST create new student  
+    @PostMapping
+    public ResponseEntity&lt;Student&gt; createStudent(@RequestBody Student student) {
+        try {
+            Student savedStudent = studentRepository.save(student);
+            return ResponseEntity.ok(savedStudent);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+    
+    // PUT update student
+    @PutMapping("/{id}")
+    public ResponseEntity&lt;Student&gt; updateStudent(@PathVariable Long id, @RequestBody Student studentDetails) {
+        Optional&lt;Student&gt; optionalStudent = studentRepository.findById(id);
+        
+        if (optionalStudent.isPresent()) {
+            Student student = optionalStudent.get();
+            student.setName(studentDetails.getName());
+            student.setEmail(studentDetails.getEmail());
+            student.setCourse(studentDetails.getCourse());
+            student.setAge(studentDetails.getAge());
+            
+            Student updatedStudent = studentRepository.save(student);
+            return ResponseEntity.ok(updatedStudent);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
+    // DELETE student
+    @DeleteMapping("/{id}")
+    public ResponseEntity&lt;?&gt; deleteStudent(@PathVariable Long id) {
+        Optional&lt;Student&gt; student = studentRepository.findById(id);
+        
+        if (student.isPresent()) {
+            studentRepository.delete(student.get());
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
+    // GET students by course
+    @GetMapping("/course/{course}")
+    public List&lt;Student&gt; getStudentsByCourse(@PathVariable String course) {
+        return studentRepository.findByCourse(course);
+    }
+}</code></pre>
+        `
+      },
+      {
+        id: "spring-boot-database",
+        title: "Database Integration & JPA",
+        content: `
+          <h3>Database Integration dengan Spring Data JPA</h3>
+          <p>Spring Data JPA mempermudah interaksi dengan database relational. Anda tidak perlu menulis SQL query manual, cukup menggunakan method names atau annotations.</p>
+          
+          <h4>Database Configuration</h4>
+          <pre><code># MySQL Configuration
+spring.datasource.url=jdbc:mysql://localhost:3306/codean_bootcamp?createDatabaseIfNotExist=true
+spring.datasource.username=root
+spring.datasource.password=yourpassword
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# PostgreSQL Configuration (Alternative)
+# spring.datasource.url=jdbc:postgresql://localhost:5432/codean_bootcamp
+# spring.datasource.username=postgres
+# spring.datasource.password=yourpassword
+# spring.datasource.driver-class-name=org.postgresql.Driver
+
+# JPA Settings
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect</code></pre>
+
+          <h4>Advanced Entity Relationships</h4>
+          <pre><code>// Course Entity
+@Entity
+@Table(name = "courses")
+public class Course {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String name;
+    private String description;
+    private int duration; // in weeks
+    
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List&lt;Student&gt; students = new ArrayList&lt;&gt;();
+    
+    // Constructors, getters, setters...
+}
+
+// Updated Student Entity with Course relationship
+@Entity
+@Table(name = "students")
+public class Student {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    private String name;
+    private String email;
+    private int age;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id")
+    private Course course;
+    
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    private List&lt;Enrollment&gt; enrollments = new ArrayList&lt;&gt;();
+    
+    // Constructors, getters, setters...
+}</code></pre>
+
+          <h4>Service Layer Implementation</h4>
+          <pre><code>package com.codean.bootcamp.service;
+
+import com.codean.bootcamp.entity.Student;
+import com.codean.bootcamp.repository.StudentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+@Transactional
+public class StudentService {
+    
+    @Autowired
+    private StudentRepository studentRepository;
+    
+    public List&lt;Student&gt; getAllStudents() {
+        return studentRepository.findAll();
+    }
+    
+    public Optional&lt;Student&gt; getStudentById(Long id) {
+        return studentRepository.findById(id);
+    }
+    
+    public Student createStudent(Student student) {
+        // Business logic validation
+        if (studentRepository.findByEmail(student.getEmail()).isPresent()) {
+            throw new RuntimeException("Email already exists");
+        }
+        
+        return studentRepository.save(student);
+    }
+    
+    public Student updateStudent(Long id, Student studentDetails) {
+        Student student = studentRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Student not found"));
+        
+        student.setName(studentDetails.getName());
+        student.setEmail(studentDetails.getEmail());
+        student.setCourse(studentDetails.getCourse());
+        student.setAge(studentDetails.getAge());
+        
+        return studentRepository.save(student);
+    }
+    
+    public void deleteStudent(Long id) {
+        Student student = studentRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Student not found"));
+        
+        studentRepository.delete(student);
+    }
+    
+    public List&lt;Student&gt; getStudentsByCourse(String course) {
+        return studentRepository.findByCourse(course);
+    }
+    
+    public List&lt;Student&gt; searchStudentsByName(String name) {
+        return studentRepository.findByNameContaining(name);
+    }
+}</code></pre>
+
+          <h4>Exception Handling</h4>
+          <pre><code>package com.codean.bootcamp.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+    
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; handleRuntimeException(RuntimeException ex) {
+        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();
+        response.put("timestamp", LocalDateTime.now());
+        response.put("status", HttpStatus.BAD_REQUEST.value());
+        response.put("error", "Bad Request");
+        response.put("message", ex.getMessage());
+        
+        return ResponseEntity.badRequest().body(response);
+    }
+    
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; handleGenericException(Exception ex) {
+        Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();
+        response.put("timestamp", LocalDateTime.now());
+        response.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
+        response.put("error", "Internal Server Error");
+        response.put("message", "An unexpected error occurred");
+        
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+    }
+}</code></pre>
+
+          <h4>Testing with Repository</h4>
+          <pre><code>// Test dengan Postman atau curl:
+
+// GET all students
+curl -X GET http://localhost:8080/api/students
+
+// POST create student
+curl -X POST http://localhost:8080/api/students \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "name": "John Doe",
+    "email": "john@codean.com",
+    "course": "Spring Boot",
+    "age": 25
+  }'
+
+// GET student by ID
+curl -X GET http://localhost:8080/api/students/1
+
+// PUT update student
+curl -X PUT http://localhost:8080/api/students/1 \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "name": "John Smith",
+    "email": "johnsmith@codean.com",
+    "course": "Full Stack",
+    "age": 26
+  }'
+
+// DELETE student
+curl -X DELETE http://localhost:8080/api/students/1</code></pre>
+        `
+      },
+      {
+        id: "spring-security",
+        title: "Spring Security & Authentication",
+        content: `
+          <h3>Spring Security Implementation</h3>
+          <p>Spring Security adalah framework untuk authentication dan authorization di aplikasi Spring. Sangat penting untuk mengamankan API dari akses yang tidak sah.</p>
+          
+          <h4>Add Security Dependencies</h4>
+          <pre><code>&lt;!-- Add to pom.xml --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;
+    &lt;artifactId&gt;jjwt-api&lt;/artifactId&gt;
+    &lt;version&gt;0.11.5&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;
+    &lt;artifactId&gt;jjwt-impl&lt;/artifactId&gt;
+    &lt;version&gt;0.11.5&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+
+          <h4>User Entity</h4>
+          <pre><code>package com.codean.bootcamp.entity;
+
+import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
+
+@Entity
+@Table(name = "users")
+public class User implements UserDetails {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @Column(unique = true)
+    private String username;
+    
+    private String password;
+    private String email;
+    private String fullName;
+    
+    @Enumerated(EnumType.STRING)
+    private Role role;
+    
+    private boolean enabled = true;
+    
+    // Constructors
+    public User() {}
+    
+    public User(String username, String password, String email, String fullName, Role role) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.fullName = fullName;
+        this.role = role;
+    }
+    
+    // UserDetails implementation
+    @Override
+    public Collection&lt;? extends GrantedAuthority&gt; getAuthorities() {
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role.name()));
+    }
+    
+    @Override
+    public boolean isAccountNonExpired() { return true; }
+    
+    @Override
+    public boolean isAccountNonLocked() { return true; }
+    
+    @Override
+    public boolean isCredentialsNonExpired() { return true; }
+    
+    @Override
+    public boolean isEnabled() { return enabled; }
+    
+    // Getters and Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
+    
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+    
+    // ... other getters and setters
+}
+
+enum Role {
+    STUDENT, INSTRUCTOR, ADMIN
+}</code></pre>
+
+          <h4>JWT Utility Class</h4>
+          <pre><code>package com.codean.bootcamp.util;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
+import org.springframework.stereotype.Component;
+
+import javax.crypto.SecretKey;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Function;
+
+@Component
+public class JwtUtil {
+    
+    private final SecretKey SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    private final int JWT_EXPIRATION = 86400000; // 24 hours
+    
+    public String extractUsername(String token) {
+        return extractClaim(token, Claims::getSubject);
+    }
+    
+    public Date extractExpiration(String token) {
+        return extractClaim(token, Claims::getExpiration);
+    }
+    
+    public &lt;T&gt; T extractClaim(String token, Function&lt;Claims, T&gt; claimsResolver) {
+        final Claims claims = extractAllClaims(token);
+        return claimsResolver.apply(claims);
+    }
+    
+    private Claims extractAllClaims(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(SECRET_KEY)
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+    }
+    
+    private Boolean isTokenExpired(String token) {
+        return extractExpiration(token).before(new Date());
+    }
+    
+    public String generateToken(String username) {
+        Map&lt;String, Object&gt; claims = new HashMap&lt;&gt;();
+        return createToken(claims, username);
+    }
+    
+    private String createToken(Map&lt;String, Object&gt; claims, String subject) {
+        return Jwts.builder()
+                .setClaims(claims)
+                .setSubject(subject)
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + JWT_EXPIRATION))
+                .signWith(SECRET_KEY)
+                .compact();
+    }
+    
+    public Boolean validateToken(String token, String username) {
+        final String extractedUsername = extractUsername(token);
+        return (extractedUsername.equals(username) && !isTokenExpired(token));
+    }
+}</code></pre>
+
+          <h4>Authentication Controller</h4>
+          <pre><code>package com.codean.bootcamp.controller;
+
+import com.codean.bootcamp.entity.User;
+import com.codean.bootcamp.service.UserService;
+import com.codean.bootcamp.util.JwtUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@RestController
+@RequestMapping("/api/auth")
+@CrossOrigin(origins = "http://localhost:3000")
+public class AuthController {
+    
+    @Autowired
+    private AuthenticationManager authenticationManager;
+    
+    @Autowired
+    private UserService userService;
+    
+    @Autowired
+    private JwtUtil jwtUtil;
+    
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    
+    @PostMapping("/login")
+    public ResponseEntity&lt;Map&lt;String, Object&gt;&gt; login(@RequestBody LoginRequest loginRequest) {
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                    loginRequest.getUsername(),
+                    loginRequest.getPassword()
+                )
+            );
+            
+            String token = jwtUtil.generateToken(loginRequest.getUsername());
+            User user = userService.findByUsername(loginRequest.getUsername());
+            
+            Map&lt;String, Object&gt; response = new HashMap&lt;&gt;();
+            response.put("token", token);
+            response.put("user", user);
+            response.put("message", "Login successful");
+            
+            return ResponseEntity.ok(response);
+            
+        } catch (Exception e) {
+            Map&lt;String, Object&gt; errorResponse = new HashMap&lt;&gt;();
+            errorResponse.put("error", "Invalid credentials");
+            return ResponseEntity.badRequest().body(errorResponse);
+        }
+    }
+    
+    @PostMapping("/register")
+    public ResponseEntity&lt;Map&lt;String, String&gt;&gt; register(@RequestBody RegisterRequest registerRequest) {
+        try {
+            User user = new User();
+            user.setUsername(registerRequest.getUsername());
+            user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
+            user.setEmail(registerRequest.getEmail());
+            user.setFullName(registerRequest.getFullName());
+            user.setRole(Role.STUDENT);
+            
+            userService.save(user);
+            
+            Map&lt;String, String&gt; response = new HashMap&lt;&gt;();
+            response.put("message", "User registered successfully");
+            
+            return ResponseEntity.ok(response);
+            
+        } catch (Exception e) {
+            Map&lt;String, String&gt; errorResponse = new HashMap&lt;&gt;();
+            errorResponse.put("error", "Registration failed: " + e.getMessage());
+            return ResponseEntity.badRequest().body(errorResponse);
+        }
+    }
+}
+
+// Request DTOs
+class LoginRequest {
+    private String username;
+    private String password;
+    
+    // getters and setters
+}
+
+class RegisterRequest {
+    private String username;
+    private String password;
+    private String email;
+    private String fullName;
+    
+    // getters and setters
+}</code></pre>
+
+          <h4>Security Configuration</h4>
+          <pre><code>package com.codean.bootcamp.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+    
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+    
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+        return config.getAuthenticationManager();
+    }
+    
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.csrf(csrf -> csrf.disable())
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/api/auth/**", "/api/public/**").permitAll()
+                .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                .anyRequest().authenticated()
+            );
+            
+        return http.build();
+    }
+}</code></pre>
+        `
+      },
+      {
+        id: "spring-testing",
+        title: "Testing Spring Boot Applications",
+        content: `
+          <h3>Testing in Spring Boot</h3>
+          <p>Testing adalah bagian penting dari development. Spring Boot menyediakan tools yang comprehensive untuk unit testing, integration testing, dan testing REST APIs.</p>
+          
+          <h4>Test Dependencies</h4>
+          <pre><code>&lt;!-- Already included in spring-boot-starter-test --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+
+&lt;!-- For testing with TestContainers (optional) --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.testcontainers&lt;/groupId&gt;
+    &lt;artifactId&gt;mysql&lt;/artifactId&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre>
+
+          <h4>Unit Testing - Service Layer</h4>
+          <pre><code>package com.codean.bootcamp.service;
+
+import com.codean.bootcamp.entity.Student;
+import com.codean.bootcamp.repository.StudentRepository;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+
+@ExtendWith(MockitoExtension.class)
+class StudentServiceTest {
+    
+    @Mock
+    private StudentRepository studentRepository;
+    
+    @InjectMocks
+    private StudentService studentService;
+    
+    private Student student;
+    
+    @BeforeEach
+    void setUp() {
+        student = new Student();
+        student.setId(1L);
+        student.setName("John Doe");
+        student.setEmail("john@codean.com");
+        student.setCourse("Spring Boot");
+        student.setAge(25);
+    }
+    
+    @Test
+    void testGetAllStudents() {
+        // Given
+        List&lt;Student&gt; students = Arrays.asList(student);
+        when(studentRepository.findAll()).thenReturn(students);
+        
+        // When
+        List&lt;Student&gt; result = studentService.getAllStudents();
+        
+        // Then
+        assertEquals(1, result.size());
+        assertEquals("John Doe", result.get(0).getName());
+        verify(studentRepository, times(1)).findAll();
+    }
+    
+    @Test
+    void testGetStudentById() {
+        // Given
+        when(studentRepository.findById(1L)).thenReturn(Optional.of(student));
+        
+        // When
+        Optional&lt;Student&gt; result = studentService.getStudentById(1L);
+        
+        // Then
+        assertTrue(result.isPresent());
+        assertEquals("John Doe", result.get().getName());
+        verify(studentRepository, times(1)).findById(1L);
+    }
+    
+    @Test
+    void testCreateStudent() {
+        // Given
+        when(studentRepository.findByEmail(student.getEmail())).thenReturn(Optional.empty());
+        when(studentRepository.save(any(Student.class))).thenReturn(student);
+        
+        // When
+        Student result = studentService.createStudent(student);
+        
+        // Then
+        assertNotNull(result);
+        assertEquals("John Doe", result.getName());
+        verify(studentRepository, times(1)).save(student);
+    }
+    
+    @Test
+    void testCreateStudentWithExistingEmail() {
+        // Given
+        when(studentRepository.findByEmail(student.getEmail())).thenReturn(Optional.of(student));
+        
+        // When & Then
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
+            studentService.createStudent(student);
+        });
+        
+        assertEquals("Email already exists", exception.getMessage());
+        verify(studentRepository, never()).save(any(Student.class));
+    }
+}</code></pre>
+
+          <h4>Integration Testing - Repository Layer</h4>
+          <pre><code>package com.codean.bootcamp.repository;
+
+import com.codean.bootcamp.entity.Student;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+
+import java.util.List;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@DataJpaTest
+class StudentRepositoryTest {
+    
+    @Autowired
+    private TestEntityManager entityManager;
+    
+    @Autowired
+    private StudentRepository studentRepository;
+    
+    private Student student;
+    
+    @BeforeEach
+    void setUp() {
+        student = new Student();
+        student.setName("John Doe");
+        student.setEmail("john@codean.com");
+        student.setCourse("Spring Boot");
+        student.setAge(25);
+    }
+    
+    @Test
+    void testFindByEmail() {
+        // Given
+        entityManager.persistAndFlush(student);
+        
+        // When
+        Optional&lt;Student&gt; found = studentRepository.findByEmail("john@codean.com");
+        
+        // Then
+        assertTrue(found.isPresent());
+        assertEquals("John Doe", found.get().getName());
+    }
+    
+    @Test
+    void testFindByCourse() {
+        // Given
+        Student student2 = new Student();
+        student2.setName("Jane Doe");
+        student2.setEmail("jane@codean.com");
+        student2.setCourse("Spring Boot");
+        student2.setAge(23);
+        
+        entityManager.persistAndFlush(student);
+        entityManager.persistAndFlush(student2);
+        
+        // When
+        List&lt;Student&gt; students = studentRepository.findByCourse("Spring Boot");
+        
+        // Then
+        assertEquals(2, students.size());
+    }
+    
+    @Test
+    void testFindByAgeBetween() {
+        // Given
+        entityManager.persistAndFlush(student);
+        
+        // When
+        List&lt;Student&gt; students = studentRepository.findByAgeBetween(20, 30);
+        
+        // Then
+        assertEquals(1, students.size());
+        assertEquals("John Doe", students.get(0).getName());
+    }
+    
+    @Test
+    void testCountByCourse() {
+        // Given
+        entityManager.persistAndFlush(student);
+        
+        // When
+        long count = studentRepository.countByCourse("Spring Boot");
+        
+        // Then
+        assertEquals(1, count);
+    }
+}</code></pre>
+
+          <h4>Web Layer Testing - Controller</h4>
+          <pre><code>package com.codean.bootcamp.controller;
+
+import com.codean.bootcamp.entity.Student;
+import com.codean.bootcamp.service.StudentService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+
+import java.util.Arrays;
+import java.util.Optional;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+@WebMvcTest(StudentController.class)
+class StudentControllerTest {
+    
+    @Autowired
+    private MockMvc mockMvc;
+    
+    @MockBean
+    private StudentService studentService;
+    
+    @Autowired
+    private ObjectMapper objectMapper;
+    
+    private Student student;
+    
+    @BeforeEach
+    void setUp() {
+        student = new Student();
+        student.setId(1L);
+        student.setName("John Doe");
+        student.setEmail("john@codean.com");
+        student.setCourse("Spring Boot");
+        student.setAge(25);
+    }
+    
+    @Test
+    void testGetAllStudents() throws Exception {
+        // Given
+        when(studentService.getAllStudents()).thenReturn(Arrays.asList(student));
+        
+        // When & Then
+        mockMvc.perform(get("/api/students"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].name").value("John Doe"))
+                .andExpect(jsonPath("$[0].email").value("john@codean.com"));
+    }
+    
+    @Test
+    void testGetStudentById() throws Exception {
+        // Given
+        when(studentService.getStudentById(1L)).thenReturn(Optional.of(student));
+        
+        // When & Then
+        mockMvc.perform(get("/api/students/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value("John Doe"))
+                .andExpect(jsonPath("$.email").value("john@codean.com"));
+    }
+    
+    @Test
+    void testCreateStudent() throws Exception {
+        // Given
+        when(studentService.createStudent(any(Student.class))).thenReturn(student);
+        
+        // When & Then
+        mockMvc.perform(post("/api/students")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(student)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value("John Doe"))
+                .andExpect(jsonPath("$.email").value("john@codean.com"));
+    }
+    
+    @Test
+    void testUpdateStudent() throws Exception {
+        // Given
+        Student updatedStudent = new Student();
+        updatedStudent.setId(1L);
+        updatedStudent.setName("John Smith");
+        updatedStudent.setEmail("johnsmith@codean.com");
+        updatedStudent.setCourse("Full Stack");
+        updatedStudent.setAge(26);
+        
+        when(studentService.updateStudent(eq(1L), any(Student.class))).thenReturn(updatedStudent);
+        
+        // When & Then
+        mockMvc.perform(put("/api/students/1")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(updatedStudent)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value("John Smith"))
+                .andExpect(jsonPath("$.email").value("johnsmith@codean.com"));
+    }
+    
+    @Test
+    void testDeleteStudent() throws Exception {
+        // When & Then
+        mockMvc.perform(delete("/api/students/1"))
+                .andExpect(status().isOk());
+    }
+}</code></pre>
+
+          <h4>Running Tests</h4>
+          <pre><code># Run all tests
+mvn test
+
+# Run specific test class
+mvn test -Dtest=StudentServiceTest
+
+# Run tests with coverage
+mvn jacoco:prepare-agent test jacoco:report
+
+# Run integration tests only
+mvn test -Dgroups=integration
+
+# Run tests and generate report
+mvn clean test site</code></pre>
         `
       }
     ]
