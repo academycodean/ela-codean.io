@@ -54,7 +54,7 @@ const LoginPage = () => {
             Codean Bootcamp
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
-            Platform Pembelajaran IT Terdepan
+            #unlockyourpotential
           </p>
         </div>
 
@@ -120,16 +120,6 @@ const LoginPage = () => {
                 {loading ? "Masuk..." : "Masuk"}
               </Button>
             </form>
-
-            <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-              <p className="text-sm text-blue-800 dark:text-blue-200 font-medium mb-2">
-                Demo Accounts:
-              </p>
-              <div className="space-y-1 text-sm text-blue-700 dark:text-blue-300">
-                <div>admin / 123456</div>
-                <div>siswa1 / password</div>
-              </div>
-            </div>
           </CardContent>
         </Card>
       </div>

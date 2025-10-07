@@ -80,13 +80,13 @@ const Dashboard = ({ onCourseSelect }) => {
             />
           </div>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8">
-            Platform pembelajaran IT terlengkap untuk menjadi developer profesional. 
-            Pelajari Frontend, Backend, dan Database dengan materi terkini.
+            Belajar <b><i>ruh-</i></b>nya coding, paham fundamental agar gak kena mental. <br></br>
+            CODE FOR LIFE
           </p>
           <div className="flex items-center justify-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
             <span>🎯 Materi Terstruktur</span>
             <span>📊 Tracking Progress</span>
-            <span>🌙 Dark Mode</span>
+            <span>🌙 Open Discuss</span>
           </div>
         </div>
 
